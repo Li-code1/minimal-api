@@ -1,3 +1,5 @@
+Desafio de Projeto da Dio, referência API mínima, aplicar os conhecimentos obtidos nas aulas criando um aplicativo.
+
 Frota de Carros: Funcionamento
 
 A frota de carros é um sistema que gerencia uma coleção de veículos, permitindo que sejam atribuídos a motoristas para realizar viagens. Aqui está uma visão geral de como funciona:
