@@ -1,4 +1,4 @@
-Desafio de Projeto da Dio, referência API mínima, aplicar os conhecimentos obtidos nas aulas criando um aplicativo.
+Desafio de Projeto da Dio, referência minimal-api, aplicar os conhecimentos obtidos nas aulas criando um aplicativo.
 
 Frota de Carros: Funcionamento
 
