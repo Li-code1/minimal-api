@@ -1,0 +1,54 @@
+//Comandos para executar o aplicativo
+
+//docker build -t frota-de-carros 
+//docker run -p 5000:5000 frota-de-carros
+
+//Saída
+
+//A saída será um JSON que representa a frota de carros:
+
+{
+  "Carros": [
+    {
+      "Placa": "ABC123",
+      "Modelo": "Gol",
+      "Marca": "Volkswagen",
+      "Ano": 2015,
+      "Cor": "Prata"
+    },
+    {
+      "Placa": "DEF456",
+      "Modelo": "Jetta",
+      "Marca": "Volkswagen",
+      "Ano": 2018,
+      "Cor": "Preto"
+    }
+  ],
+  "Motoristas": [
+    {
+      "Nome": "João",
+      "CNH": "123456789"
+    },
+    {
+      "Nome": "Maria",
+      "CNH": "987654321"
+    }
+  ],
+  "Viagens": [
+    {
+      "Carro": {
+        "Placa": "ABC123",
+        "Modelo": "Gol",
+        "Marca": "Volkswagen",
+        "Ano": 2015,
+        "Cor": "Prata"
+      },
+      "Motorista": {
+        "Nome": "João",
+        "CNH": "123456789"
+      },
+      "DataSaida": "2023-03-16T14:30:00",
+      "Destino": "São Paulo"
+    }
+  ]
+}
