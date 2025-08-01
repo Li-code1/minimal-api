@@ -1,0 +1,129 @@
+using System;
+using System.Collections.Generic;
+
+namespace FrotaDeCarros
+{
+    public class Carro
+    {
+        public string Placa { get; set; }
+        public string Modelo { get; set; }
+        public string Marca { get; set; }
+        public int Ano { get; set; }
+        public string Cor { get; set; }
+        public bool Disponivel { get; set; }
+
+        public Carro(string placa, string modelo, string marca, int ano, string cor)
+        {
+            Placa = placa;
+            Modelo = modelo;
+            Marca = marca;
+            Ano = ano;
+            Cor = cor;
+            Disponivel = true;
+        }
+    }
+
+    public class Motorista
+    {
+        public string Nome { get; set; }
+        public string CNH { get; set; }
+
+        public Motorista(string nome, string cnh)
+        {
+            Nome = nome;
+            CNH = cnh;
+        }
+    }
+
+    public class Viagem
+    {
+        public Carro Carro { get; set; }
+        public Motorista Motorista { get; set; }
+        public DateTime DataSaida { get; set; }
+        public DateTime DataRetorno { get; set; }
+        public string Destino { get; set; }
+
+        public Viagem(Carro carro, Motorista motorista, DateTime dataSaida, string destino)
+        {
+            Carro = carro;
+            Motorista = motorista;
+            DataSaida = dataSaida;
+            Destino = destino;
+        }
+    }
+
+    public class Frota
+    {
+        public List<Carro> Carros { get; set; }
+        public List<Motorista> Motoristas { get; set; }
+        public List<Viagem> Viagens { get; set; }
+
+        public Frota()
+        {
+            Carros = new List<Carro>();
+            Motoristas = new List<Motorista>();
+            Viagens = new List<Viagem>();
+        }
+
+        public void AdicionarCarro(Carro carro)
+        {
+            Carros.Add(carro);
+        }
+
+        public void AdicionarMotorista(Motorista motorista)
+        {
+            Motoristas.Add(motorista);
+        }
+
+        public void RegistrarViagem(Viagem viagem)
+        {
+            Viagens.Add(viagem);
+            viagem.Carro.Disponivel = false;
+        }
+
+        public void FinalizarViagem(Viagem viagem)
+        {
+            viagem.Carro.Disponivel = true;
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            Frota frota = new Frota();
+
+            Carro carro1 = new Carro("ABC123", "Gol", "Volkswagen", 2015, "Prata");
+            Carro carro2 = new Carro("DEF456", "Jetta", "Volkswagen", 2018, "Preto");
+
+            Motorista motorista1 = new Motorista("João", "123456789");
+            Motorista motorista2 = new Motorista("Maria", "987654321");
+
+            frota.AdicionarCarro(carro1);
+            frota.AdicionarCarro(carro2);
+            frota.AdicionarMotorista(motorista1);
+            frota.AdicionarMotorista(motorista2);
+
+            Viagem viagem1 = new Viagem(carro1, motorista1, DateTime.Now, "São Paulo");
+            frota.RegistrarViagem(viagem1);
+
+            Console.WriteLine("Frota de carros:");
+            foreach (var carro in frota.Carros)
+            {
+                Console.WriteLine($"Placa: {carro.Placa}, Modelo: {carro.Modelo}, Disponivel: {carro.Disponivel}");
+            }
+
+            Console.WriteLine("Motoristas:");
+            foreach (var motorista in frota.Motoristas)
+            {
+                Console.WriteLine($"Nome: {motorista.Nome}, CNH: {motorista.CNH}");
+            }
+
+            Console.WriteLine("Viagens:");
+            foreach (var viagem in frota.Viagens)
+            {
+                Console.WriteLine($"Carro: {viagem.Carro.Placa}, Motorista: {viagem.Motorista.Nome}, Destino: {viagem.Destino}");
+            }
+        }
+    }
+}
